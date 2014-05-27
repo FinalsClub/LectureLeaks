@@ -39,6 +39,7 @@ def school_subject_course(request, school, subject, course):
 
 def upload(request):
     if request.method == 'POST': # If the form has been submitted...
+        return HttpResponseRedirect('/') # Disable new uploads.
         form = DocumentForm(request.POST, request.FILES) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             # Process the data in form.cleaned_data
@@ -58,6 +59,7 @@ def upload(request):
 @csrf_exempt
 def uploadnocaptcha(request):
     if request.method == 'POST': # If the form has been submitted...
+        return HttpResponseRedirect('/') # Disable new uploads.
         form = DocumentNoCaptchaForm(request.POST, request.FILES) # A form bound to the POST data
         if form.is_valid(): # All validation rules pass
             # Process the data in form.cleaned_data
